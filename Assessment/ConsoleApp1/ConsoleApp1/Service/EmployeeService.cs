@@ -33,10 +33,10 @@ namespace ASSESSSMENT.Service
         /// To view the Employee details
         /// </summary>
         /// <returns>To get the list of employee</returns>
-        public List<Entity> ViewEmployee()
-        {
-            return new List<Entity>(_employee);
-        }
+        //public List<Entity> ViewEmployee()
+        //{
+        //    return new List<Entity>(_employee);
+        //}
 
         /// <summary>
         /// To get the employee detail by ID
@@ -61,6 +61,16 @@ namespace ASSESSSMENT.Service
                 _employee.Remove(entity);
             }
         }
+
+        //public Entity SamePassWord(Entity employee)
+        //{
+           
+        //    return entity;
+        //}
+        //// public Entity validID(int id)
+        ////{
+
+        //}
 
         public void UpdateEmployee(Entity entity)
         {

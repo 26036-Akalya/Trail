@@ -50,11 +50,22 @@ namespace ASSESSSMENT.Controller
                         }
                     case MenuOption.ViewByID:
                         {
-                            int getID = _view.ViewInt("Enter the ID", max);
-                            if (getID != default)
+                            int value = _view.GetId();
+                            if (_service.GetByID(value) == null)
                             {
-                                _view.ViewEmployeeDetail(_service.ViewEmployee());
+                                _view.ShowMessage("Employee detail is not found\n");
+                                break;
                             }
+                            //if (getID != default)
+                            //{
+                            //    string pass = _view.ViewPassword("Enter the password to view the code");
+                            //    if (pass != default)
+                            //    {
+                            //        _view.ViewDet(_service.SamePassWord(pass));
+                            //    }
+
+                            //}
+                            _view.Pass(_service.GetByID(value));
                             break;
                         }
                     case MenuOption.DeleteTask:

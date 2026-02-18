@@ -273,21 +273,45 @@ namespace ASSESSSMENT.View
         /// To view the employee details
         /// </summary>
         /// <param name="employee">list of employee</param>
-        public void ViewEmployeeDetail(List<Entity> employee)
-        {
-            if (employee.Count == 0)
-            {
-                ShowMessage("There is no employee details");
-            }
+        //public void ViewEmployeeDetail(List<Entity> employee)
+        //{
+        //    if (employee.Count == 0)
+        //    {
+        //        ShowMessage("There is no employee details");
+        //    }
 
-            var table = new ConsoleTable("Name", "Target Date", "Heading", "Description");
-            foreach (Entity entity in employee)
+        //    var table = new ConsoleTable("Name", "Target Date", "Heading", "Description");
+        //    foreach (Entity entity in employee)
+        //    {
+        //        table.AddRow(entity.Name, entity.TargetDate, entity.Heading, entity.Description);
+        //    }
+        //    table.Write();
+        //}
+
+        public void ViewDet(Entity entity)
+        {
+            if (entity == null)
             {
-                table.AddRow(entity.Name, entity.TargetDate, entity.Heading, entity.Description);
+                return;
             }
+            var table = new ConsoleTable("Name", "Target Date", "Heading", "Description");
+            table.AddRow(entity.Name, entity.TargetDate, entity.Heading, entity.Description);
             table.Write();
+
         }
 
+        public void Pass(Entity entity)
+        {
+            string pass = ViewPassword("Enter the password");
+            if (pass == entity.Password)
+            {
+                var table = new ConsoleTable("Name", "Target Date", "Heading", "Description");
+                table.AddRow(entity.Name, entity.TargetDate, entity.Heading, entity.Description);
+                table.Write();
+                return;
+            }
+            ShowMessage("Invalid password");
+        }
         /// <summary>
         /// To get the valid input
         /// </summary>
