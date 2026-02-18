@@ -77,6 +77,7 @@ namespace ASSESSSMENT.Controller
                                 break;
                             }
                             _service.DeleteEmployee(value);
+
                             _view.ShowMessage("Employee detail is deleted successfully...\n");
                             break;
                         }
