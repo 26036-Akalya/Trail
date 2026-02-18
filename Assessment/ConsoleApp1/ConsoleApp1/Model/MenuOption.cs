@@ -15,5 +15,6 @@ namespace ASSESSSMENT.Model
         ViewByID,
         UpdateTaskById,
         DeleteTask,
+        Exit,
     }
 }

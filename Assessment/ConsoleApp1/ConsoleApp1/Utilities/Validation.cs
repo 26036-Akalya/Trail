@@ -35,7 +35,7 @@ namespace ASSESSSMENT.Utilities
 
             if (string.IsNullOrEmpty(input))
             {
-                throw new ArgumentNullException("Input should not be null");
+                throw new ArgumentException("Input should not be null");
             }
 
             if (!int.TryParse(input, out int value))
@@ -93,7 +93,7 @@ namespace ASSESSSMENT.Utilities
                 throw new ArgumentNullException("Input should not be null");
             }
 
-            if (!Regex.IsMatch(input, "^[A-Za-z./#*_@!]{8,}$"))
+            if (!Regex.IsMatch(input, "^[A-Za-z0-9./#*_@!]{8,}$"))
             {
                 throw new FormatException("Password must be 8 or more character");
             }
@@ -121,7 +121,7 @@ namespace ASSESSSMENT.Utilities
                 throw new ArgumentNullException("Input should not be null");
             }
 
-            if (!(DateOnly.TryParseExact(input,"dd/MM/yyyy",CultureInfo.InvariantCulture,DateTimeStyles.None, out DateOnly output)))
+            if (!DateOnly.TryParseExact(input,"dd/MM/yyyy",CultureInfo.InvariantCulture,DateTimeStyles.None, out DateOnly output))
             {
                  throw new FormatException("Date should be in this format (dd/MM/yyyy) ");
             }
