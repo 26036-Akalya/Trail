@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using ASSESSSMENT.Model;
@@ -17,6 +18,7 @@ namespace ASSESSSMENT.View
         private readonly int _limit = 3;
         private readonly Validation _valid;
         private readonly int max = int.MaxValue;
+        private readonly int range = Enum.GetValues(typeof(EditMenu)).Length;
         public DisplayEmployeeDetails(Validation valid)
         {
             _valid = valid;
@@ -298,7 +300,56 @@ namespace ASSESSSMENT.View
         /// <returns> valid Id of the Employee</returns>
         public int GetId()
         {
-            return ViewInt("Enter the ID of the employee to view the details:",max);
+            return ViewInt("Enter the ID of the employee to view the details:", max);
+        }
+
+        public Entity EditEmployee(int id)
+        {
+            Entity update = new Entity { Id = id };
+            while (true)
+            {
+                ShowEditMenu();
+                int choice = ViewInt("Enter the choice :", range);
+                EditMenu menu = (EditMenu)choice;
+                if (menu == EditMenu.Exit)
+                {
+                    return update;
+                }
+
+                EditChoice(update, choice);
+            }
+        }
+
+        public Entity EditChoice(Entity update, int choice)
+        {
+            switch ((EditMenu)choice)
+            {
+                case EditMenu.Date:
+                    {
+                        update.TargetDate = ViewDate("Enter the date");
+                        break;
+                    }
+                case EditMenu.EditHeading:
+                    {
+                        update.Heading = Viewstring("Enter the heading");
+                        break;
+                    }
+                case EditMenu.EditDescription:
+                    {
+                        update.Description = Viewstring("Enter the description");
+                        break;
+                    }
+            }
+            return update;
+        }
+
+        public void ShowEditMenu()
+        {
+            ShowMessage("Edit Menu");
+            foreach (EditMenu option in Enum.GetValues(typeof(EditMenu)))
+            {
+                ShowMessage("\n" + (int)option + "." + option);
+            }
         }
     }
 }

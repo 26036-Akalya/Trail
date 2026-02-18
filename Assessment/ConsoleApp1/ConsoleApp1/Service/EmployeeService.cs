@@ -67,5 +67,29 @@ namespace ASSESSSMENT.Service
             }
         }
 
+        public void UpdateEmployee(Entity entity)
+        {
+            Entity exixting = GetByID(entity.Id);
+            if (exixting == null)
+            {
+                return;
+            }
+
+            if (entity.TargetDate != default)
+            {
+                exixting.TargetDate = entity.TargetDate;
+            }
+
+            if (entity.Heading != default)
+            {
+                exixting.Heading = entity.Heading;
+            }
+
+            if (entity.Description != default)
+            {
+                entity.Description = entity.Description;
+            }
+        }
+
     }
 }

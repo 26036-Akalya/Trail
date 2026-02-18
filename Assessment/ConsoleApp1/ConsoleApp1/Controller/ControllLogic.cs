@@ -79,6 +79,10 @@ namespace ASSESSSMENT.Controller
                                 _view.ShowMessage("Employee detail is not found\n");
                                 break;
                             }
+
+                            _service.UpdateEmployee(_view.EditEmployee(value));
+                            _view.ShowMessage("Employee detail updated successfully\n");
+
                             break;
                         }
                     case MenuOption.Exit:
