@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using ASSESSSMENT.Model;
 using ASSESSSMENT.Service;
 using ASSESSSMENT.View;
@@ -55,14 +50,17 @@ namespace ASSESSSMENT.Controller
                         }
                     case MenuOption.ViewByID:
                         {
-                            int getID = _view.ViewInt("Enter the choice", max);
-                            _view.ViewEmployeeDetail(_service.ViewEmployee());
+                            int getID = _view.ViewInt("Enter the ID", max);
+                            if (getID != default)
+                            {
+                                _view.ViewEmployeeDetail(_service.ViewEmployee());
+                            }
                             break;
                         }
                     case MenuOption.DeleteTask:
                         {
                             int value = _view.GetId();
-                            if (value == default)
+                            if (_service.GetByID(value) == null )
                             {
                                 _view.ShowMessage("Employee detail is not found\n");
                                 break;
@@ -74,7 +72,7 @@ namespace ASSESSSMENT.Controller
                     case MenuOption.UpdateTaskById:
                         {
                             int value = _view.GetId();
-                            if (value == default)
+                            if (_service.GetByID(value) == null)
                             {
                                 _view.ShowMessage("Employee detail is not found\n");
                                 break;

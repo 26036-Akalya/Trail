@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using ASSESSSMENT.Model;
+﻿using ASSESSSMENT.Model;
 using ASSESSSMENT.Utilities;
 using ConsoleTables;
 
@@ -300,7 +294,7 @@ namespace ASSESSSMENT.View
         /// <returns> valid Id of the Employee</returns>
         public int GetId()
         {
-            return ViewInt("Enter the ID of the employee to view the details:", max);
+            return ViewInt("Enter the ID of the employee:", max);
         }
 
         public Entity EditEmployee(int id)
