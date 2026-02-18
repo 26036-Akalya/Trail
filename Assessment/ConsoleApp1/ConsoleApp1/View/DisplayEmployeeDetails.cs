@@ -9,6 +9,9 @@ using ConsoleTables;
 
 namespace ASSESSSMENT.View
 {
+    /// <summary>
+    /// To show the user interface
+    /// </summary>
     public class DisplayEmployeeDetails
     {
         private readonly int _limit = 3;
@@ -19,6 +22,9 @@ namespace ASSESSSMENT.View
             _valid = valid;
         }
 
+        /// <summary>
+        /// To show the main menu
+        /// </summary>
         public void ShowMenu()
         {
             ShowMessage("\n\n-----Emplyee Details-----");
@@ -27,6 +33,12 @@ namespace ASSESSSMENT.View
                 Console.WriteLine((int)options + "." + options);
             }
         }
+        /// <summary>
+        /// To view the valid integer
+        /// </summary>
+        /// <param name="message">message from the user</param>
+        /// <param name="limit">input should be within thie limit</param>
+        /// <returns></returns>
 
         public int ViewInt(string message, int limit)
         {
@@ -73,6 +85,12 @@ namespace ASSESSSMENT.View
                 }
             }
         }
+
+        /// <summary>
+        /// To view the valide string
+        /// </summary>
+        /// <param name="message">input message</param>
+        /// <returns> valid string</returns>
         public string? Viewstring(string message)
         {
             int range = _limit;
@@ -110,6 +128,12 @@ namespace ASSESSSMENT.View
                 }
             }
         }
+
+        /// <summary>
+        /// to show the valid password
+        /// </summary>
+        /// <param name="message"> input message</param>
+        /// <returns></returns>
         public string? ViewPassword(string message)
         {
             int range = _limit;
@@ -151,6 +175,12 @@ namespace ASSESSSMENT.View
                 }
             }
         }
+
+        /// <summary>
+        /// To view the valid date
+        /// </summary>
+        /// <param name="message"> input message</param>
+        /// <returns>valid date</returns>
         public DateOnly ViewDate(string message)
         {
             int range = _limit;
@@ -193,11 +223,19 @@ namespace ASSESSSMENT.View
             }
         }
 
+        /// <summary>
+        /// To show the message
+        /// </summary>
+        /// <param name="message">input message</param>
         public void ShowMessage(string message)
         {
             Console.WriteLine(message);
         }
 
+        /// <summary>
+        /// Get employee details
+        /// </summary>
+        /// <returns>single employee details</returns>
         public Entity? GetEmployeeDetails()
         {
             string password = ViewPassword("Enter the password ");
@@ -235,6 +273,10 @@ namespace ASSESSSMENT.View
             };
         }
 
+        /// <summary>
+        /// To view the employee details
+        /// </summary>
+        /// <param name="employee">list of employee</param>
         public void ViewEmployeeDetail(List<Entity> employee)
         {
             if (employee.Count == 0)
@@ -250,6 +292,10 @@ namespace ASSESSSMENT.View
             table.Write();
         }
 
+        /// <summary>
+        /// To get the valid input
+        /// </summary>
+        /// <returns> valid Id of the Employee</returns>
         public int GetId()
         {
             return ViewInt("Enter the ID of the employee to view the details:",max);

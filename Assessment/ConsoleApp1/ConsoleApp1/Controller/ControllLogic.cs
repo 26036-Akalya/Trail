@@ -10,6 +10,9 @@ using ASSESSSMENT.View;
 
 namespace ASSESSSMENT.Controller
 {
+    /// <summary>
+    /// To contole the flow of logic
+    /// </summary>
     public class ControllLogic
     {
         private readonly EmployeeService _service;
@@ -22,6 +25,10 @@ namespace ASSESSSMENT.Controller
             _service = service;
             _view = view;
         }
+
+        /// <summary>
+        /// To control the flow of logic
+        /// </summary>
         public void Run()
         {
             while (true)
