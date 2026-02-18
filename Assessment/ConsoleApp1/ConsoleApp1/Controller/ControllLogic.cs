@@ -54,12 +54,24 @@ namespace ASSESSSMENT.Controller
                         }
                     case MenuOption.DeleteTask:
                         {
-
+                            int value = _view.GetId();
+                            if (value == default)
+                            {
+                                _view.ShowMessage("Employee detail is not found\n");
+                                break;
+                            }
+                            _service.DeleteEmployee(value);
+                            _view.ShowMessage("Employee detail is deleted successfully...\n");
                             break;
                         }
                     case MenuOption.UpdateTaskById:
                         {
-
+                            int value = _view.GetId();
+                            if (value == default)
+                            {
+                                _view.ShowMessage("Employee detail is not found\n");
+                                break;
+                            }
                             break;
                         }
                     case MenuOption.Exit:

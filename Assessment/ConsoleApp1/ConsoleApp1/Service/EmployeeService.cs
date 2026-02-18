@@ -32,5 +32,20 @@ namespace ASSESSSMENT.Service
             return new List<Entity>(_employee);
         }
 
+        public Entity? GetByID(int id)
+        {
+            Entity entity = _employee.FirstOrDefault(c => c.Id == id);
+            return entity;
+        }
+
+        public void DeleteEmployee(int id)
+        {
+            Entity entity = GetByID(id);
+            if (entity != null)
+            {
+                _employee.Remove(entity);
+            }
+        }
+
     }
 }

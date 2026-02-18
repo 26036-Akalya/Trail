@@ -13,6 +13,7 @@ namespace ASSESSSMENT.View
     {
         private readonly int _limit = 3;
         private readonly Validation _valid;
+        private readonly int max = int.MaxValue;
         public DisplayEmployeeDetails(Validation valid)
         {
             _valid = valid;
@@ -20,7 +21,7 @@ namespace ASSESSSMENT.View
 
         public void ShowMenu()
         {
-            ShowMessage("-----Emplyee Details-----");
+            ShowMessage("\n\n-----Emplyee Details-----");
             foreach (MenuOption options in Enum.GetValues(typeof(MenuOption)))
             {
                 Console.WriteLine((int)options + "." + options);
@@ -247,6 +248,11 @@ namespace ASSESSSMENT.View
                 table.AddRow(entity.Name, entity.TargetDate, entity.Heading, entity.Description);
             }
             table.Write();
+        }
+
+        public int GetId()
+        {
+            return ViewInt("Enter the ID of the employee to view the details:",max);
         }
     }
 }
